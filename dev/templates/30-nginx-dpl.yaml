@@ -9,7 +9,7 @@ spec:
   selector: 
     matchLabels: 
       app: nginx
-  replicas: 1
+  replicas: {{ .Values.replicaCount }}
   template:
     metadata:
       labels:
@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx
+        image: {{ .Values.image.repository }}
         ports:
         - containerPort: 80
         volumeMounts:
